@@ -7,9 +7,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "secrets-cli": "bin/cli.js"
+  },
   "author": "37shapes",
   "license": "ISC",
   "engines": {
     "node": ">=8.11.1"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0"
   }
 }
