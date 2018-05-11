@@ -13,6 +13,10 @@ module.exports = () => {
       require('./lib/cmd/login')(args);
       break;
 
+    case 'get':
+      require('./lib/cmd/get')(args);
+      break;
+
     default:
       console.error(`'${cmd}' is not a valid command!`);
       require('./lib/cmd/help')(args);
