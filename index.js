@@ -1,4 +1,14 @@
+const path = require('path');
 const minimist = require('minimist');
+
+function readConfig() {
+  const cwd = process.cwd();
+  try {
+    return require(path.join(cwd, '/.secretsrc.json'));
+  } catch (e) {
+    return {};
+  }
+}
 
 module.exports = () => {
   const args = minimist(process.argv.slice(2));
@@ -14,7 +24,10 @@ module.exports = () => {
       break;
 
     case 'pull':
-      require('./lib/cmd/pull')(args);
+      const config = readConfig();
+      const mergedArgs = Object.assign({}, config, args);
+      if (mergedArgs.output === 'false') delete mergedArgs.output;
+      require('./lib/cmd/pull')(mergedArgs);
       break;
 
     default:
