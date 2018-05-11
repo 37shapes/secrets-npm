@@ -1,7 +1,7 @@
 const path = require('path');
 
 const { SecretsAPI } = require('./lib/API');
-const { SecretsCache } = require('./lib/Cache');
+const { SecretsFile } = require('./lib/File');
 
 async function main() {
   const api = new SecretsAPI();
@@ -15,7 +15,7 @@ async function main() {
   }
 
   const cacheFilePath = path.join(__dirname, '.env');
-  const cache = new SecretsCache(cacheFilePath);
+  const cache = new SecretsFile(cacheFilePath);
 
   let secrets;
   try {
@@ -32,4 +32,5 @@ async function main() {
   console.log(secrets);
 }
 
-main();
+// main();
+

@@ -12,8 +12,9 @@
   },
   "author": "37shapes",
   "license": "ISC",
+  "preferGlobal": true,
   "engines": {
-    "node": ">=8.11.1"
+    "node": ">=8"
   },
   "dependencies": {
     "minimist": "^1.2.0"
