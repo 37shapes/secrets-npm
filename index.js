@@ -1,36 +1,24 @@
-const path = require('path');
+const minimist = require('minimist');
 
-const { SecretsAPI } = require('./lib/API');
-const { SecretsFile } = require('./lib/File');
+module.exports = () => {
+  const args = minimist(process.argv.slice(2));
+  let cmd = args._[0] || 'help';
 
-async function main() {
-  const api = new SecretsAPI();
+  switch (cmd) {
+    case 'help':
+      require('./lib/cmd/help')(args);
+      break;
 
-  let authToken;
-  try {
-    authToken = await api.login('alex@khom', 'password');
-    console.log(authToken);
-  } catch (e) {
-    console.log(e);
+    case 'login':
+      require('./lib/cmd/login')(args);
+      break;
+
+    case 'pull':
+      require('./lib/cmd/pull')(args);
+      break;
+
+    default:
+      console.error(`'${cmd}' is not a valid command!`);
+      require('./lib/cmd/help')(args);
   }
-
-  const cacheFilePath = path.join(__dirname, '.env');
-  const cache = new SecretsFile(cacheFilePath);
-
-  let secrets;
-  try {
-    secrets = await api.secrets(authToken);
-    await cache.write(secrets);
-  } catch (e) {
-    console.log(e);
-    try {
-      secrets = await cache.read();
-    } catch (e) {
-      console.log(e);
-    }
-  }
-  console.log(secrets);
-}
-
-// main();
-
+};
