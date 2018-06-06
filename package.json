@@ -1,8 +1,18 @@
 {
   "name": "@37shapes/secrets",
   "version": "1.0.0",
-  "description": "NPM Module for https://secrets.37shapes.com",
+  "description": "Managing Secrets Tool",
   "main": "index.js",
+  "bugs": "https://github.com/37shapes/secrets-npm/issues",
+  "homepage": "https://secrets.37shapes.com",
+  "repository": "https://github.com/37shapes/secrets-npm",
+  "keywords": [
+    "secrets",
+    "secure secrets",
+    "encrypted secrets",
+    "secrets on-premise",
+    "secrets saas"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
