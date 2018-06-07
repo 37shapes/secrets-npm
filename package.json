@@ -1,6 +1,6 @@
 {
   "name": "@37shapes/secrets",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Managing Secrets Tool",
   "main": "index.js",
   "bugs": "https://github.com/37shapes/secrets-npm/issues",
